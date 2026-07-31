@@ -1,11 +1,13 @@
 package rocali.play.content;
 
+import java.time.LocalDate;
+
 public class Movie {
     public String title;
     public String description;
     public int duration;
     public String gender;
-    public int deliveryYear;
+    public LocalDate deliveryDate;
     public double qualification;
     public boolean available;
 
@@ -14,8 +16,8 @@ public class Movie {
     }
 
     public String getDetails() {
-        return "Title: " + title + "(" + duration + ")\n" +
-                "Year: " + deliveryYear + "\n" +
+        return "Title: " + title + " (" + duration + "m)\n" +
+                "Year: " + deliveryDate.getYear() + "\n" +
                 "Description: " + description + "\n" +
                 "Gender: " + gender + "\n" +
                 "Qualification: " + qualification + "/5";

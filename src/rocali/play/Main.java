@@ -3,6 +3,10 @@ package rocali.play;
 import rocali.play.content.Movie;
 import rocali.play.platform.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.Month;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +18,8 @@ public class Main {
     private static void showMovie() {
         Movie movie = new Movie();
         movie.title = "Pulp Fiction";
-        movie.deliveryYear = 2000;
+        movie.duration = 102;
+        movie.deliveryDate = LocalDate.of(2020, Month.JANUARY, 1);
         movie.gender = "Action";
         movie.qualify(4.8);
 
@@ -23,6 +28,8 @@ public class Main {
         User user = new User();
         user.name = "Michel";
         user.email = "montells@gmail.com";
+        user.registrationDate = LocalDateTime.of(2020, Month.JANUARY, 1, 8, 27);
+        System.out.println(user.name + " registered at: " + user.registrationDate);
         user.watch(movie);
     }
 
