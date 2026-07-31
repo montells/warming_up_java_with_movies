@@ -1,6 +1,7 @@
 package rocali.play;
 
 import rocali.play.content.Movie;
+import rocali.play.platform.User;
 
 import java.util.Scanner;
 
@@ -18,6 +19,11 @@ public class Main {
         movie.qualify(4.8);
 
         System.out.println(movie.getDetails());
+
+        User user = new User();
+        user.name = "Michel";
+        user.email = "montells@gmail.com";
+        user.watch(movie);
     }
 
     private static void extracted() {
