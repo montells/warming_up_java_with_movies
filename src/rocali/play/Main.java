@@ -1,6 +1,7 @@
 package rocali.play;
 
 import rocali.play.content.Movie;
+import rocali.play.platform.Platform;
 import rocali.play.platform.User;
 import rocali.play.utils.ScannerUtils;
 
@@ -12,6 +13,7 @@ import java.util.Scanner;
 
 public class Main {
     public static final String  VERSION = "1.0.0";
+    public static final String  PLATFORM_NAME = "ROCALI";
 
     public static void main(String[] args) {
         System.out.println("Warming 🏃 up JAVA!");
@@ -45,6 +47,11 @@ public class Main {
 
         System.out.println("Qualification Integer: " + qualificationInt);
         System.out.println("PrimesAmount: " + primesAmount);
+
+        Platform platform = new Platform(PLATFORM_NAME);
+        platform.addContent(movie);
+        System.out.println("There are " + platform.getContent().size() + " in the platform " + platform.getName());
+        platform.showContent();
     }
 
     private static void extracted() {
