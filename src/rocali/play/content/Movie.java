@@ -11,6 +11,19 @@ public class Movie {
     public double qualification;
     public boolean available;
 
+    public Movie(String title, int duration, String gender) {
+        this.title = title;
+        this.duration = duration;
+        this.gender = gender;
+        this.available = true;
+    }
+
+    public Movie(String title, int duration, String gender, int year, int month, double qualification) {
+        this(title, duration, gender);
+        this.deliveryDate = LocalDate.of(year, month, 1);
+        this.qualify(qualification);
+    }
+
     public void play() {
         System.out.println("Playing the movie " + title);
     }

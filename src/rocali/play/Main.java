@@ -28,19 +28,10 @@ public class Main {
         int month = ScannerUtils.getInt("Movie Month");
         double qualification = ScannerUtils.getDecimal("Movie Qualify");
 
-        Movie movie = new Movie();
-        movie.title = title;
-        movie.duration = duration;
-        movie.deliveryDate = LocalDate.of(year, month, 1);
-        movie.gender = "Action";
-        movie.qualify(qualification);
-
+        Movie movie = new Movie(title, duration, "Action", year, month, qualification);
         System.out.println(movie.getDetails());
 
-        User user = new User();
-        user.name = "Michel";
-        user.email = "montells@gmail.com";
-        user.registrationDate = LocalDateTime.of(2020, Month.JANUARY, 1, 8, 27);
+        User user = new User("Michel", "montells@gmail.com");
         System.out.println(user.name + " registered at: " + user.registrationDate);
         user.watch(movie);
 
