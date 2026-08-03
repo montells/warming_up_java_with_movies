@@ -3,13 +3,13 @@ package rocali.play.content;
 import java.time.LocalDate;
 
 public class Movie {
-    public String title;
-    public String description;
-    public int duration;
-    public String gender;
-    public LocalDate deliveryDate;
-    public double qualification;
-    public boolean available;
+    private String title;
+    private String description;
+    private int duration;
+    private String gender;
+    private LocalDate deliveryDate;
+    private double qualification;
+    private boolean available;
 
     public Movie(String title, int duration, String gender) {
         this.title = title;
@@ -18,10 +18,9 @@ public class Movie {
         this.available = true;
     }
 
-    public Movie(String title, int duration, String gender, int year, int month, double qualification) {
+    public Movie(String title, int duration, String gender, int year, int month) {
         this(title, duration, gender);
         this.deliveryDate = LocalDate.of(year, month, 1);
-        this.qualify(qualification);
     }
 
     public void play() {
@@ -44,5 +43,37 @@ public class Movie {
 
     public boolean isPopular() {
         return qualification >= 4;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public double getQualification() {
+        return qualification;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

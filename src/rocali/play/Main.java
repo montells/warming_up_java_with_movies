@@ -28,18 +28,22 @@ public class Main {
         int month = ScannerUtils.getInt("Movie Month");
         double qualification = ScannerUtils.getDecimal("Movie Qualify");
 
-        Movie movie = new Movie(title, duration, "Action", year, month, qualification);
+        Movie movie = new Movie(title, duration, "Action", year, month);
+        movie.qualify(qualification);
         System.out.println(movie.getDetails());
+        if (movie.isAvailable()) {
+            System.out.println("The movie " + movie.getTitle() + " is available.");
+        }
 
         User user = new User("Michel", "montells@gmail.com");
         System.out.println(user.name + " registered at: " + user.registrationDate);
         user.watch(movie);
 
 
-        int qualificationInt = (int) movie.qualification;
-        long primesAmount = Long.parseLong("25");
+        int qualificationInt = (int) qualification;
+        long primesAmount = Long.parseLong("4");
 
-        System.out.println("Qualification: " + qualificationInt);
+        System.out.println("Qualification Integer: " + qualificationInt);
         System.out.println("PrimesAmount: " + primesAmount);
     }
 
