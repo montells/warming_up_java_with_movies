@@ -31,6 +31,13 @@ public class Main {
         user.registrationDate = LocalDateTime.of(2020, Month.JANUARY, 1, 8, 27);
         System.out.println(user.name + " registered at: " + user.registrationDate);
         user.watch(movie);
+
+
+        int qualificationInt = (int) movie.qualification;
+        long primesAmount = Long.parseLong("25");
+
+        System.out.println("Qualification: " + qualificationInt);
+        System.out.println("PrimesAmount: " + primesAmount);
     }
 
     private static void extracted() {
