@@ -2,6 +2,7 @@ package rocali.play;
 
 import rocali.play.content.Movie;
 import rocali.play.platform.User;
+import rocali.play.utils.ScannerUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,15 +14,22 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Warming 🏃 up JAVA! With a little project for managing Movies 📽");
         showMovie();
+//        extracted();
     }
 
     private static void showMovie() {
+        String title = ScannerUtils.getText("Movie Title");
+        int duration = ScannerUtils.getInt("Movie Duration");
+        int year = ScannerUtils.getInt("Movie Year");
+        int month = ScannerUtils.getInt("Movie Month");
+        double qualification = ScannerUtils.getDecimal("Movie Qualify");
+
         Movie movie = new Movie();
-        movie.title = "Pulp Fiction";
-        movie.duration = 102;
-        movie.deliveryDate = LocalDate.of(2020, Month.JANUARY, 1);
+        movie.title = title;
+        movie.duration = duration;
+        movie.deliveryDate = LocalDate.of(year, month, 1);
         movie.gender = "Action";
-        movie.qualify(4.8);
+        movie.qualify(qualification);
 
         System.out.println(movie.getDetails());
 
@@ -41,14 +49,10 @@ public class Main {
     }
 
     private static void extracted() {
-        System.out.print("Please enter a your name: ");
-
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
+        String name = ScannerUtils.getText("Please enter your name");
         System.out.println("Hello " + name + ". This is a small project aimed to remain Java.");
 
-        System.out.print("How old are you " + name + ": ");
-        int age = scanner.nextInt();
+        int age = ScannerUtils.getInt("How old are you " + name);
         System.out.println(name + " you can consume content +" + age);
     }
 }
