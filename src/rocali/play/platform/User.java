@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 public class User {
-    public String name;
-    public String email;
-    public LocalDateTime registrationDate;
+    private String name;
+    private String email;
+    private LocalDateTime registrationDate;
 
     public User(String name, String email) {
         this.name = name;
@@ -19,5 +19,17 @@ public class User {
     public void watch(Movie movie) {
         System.out.println("Watching...");
         movie.play();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 }

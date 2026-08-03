@@ -36,7 +36,7 @@ public class Main {
         }
 
         User user = new User("Michel", "montells@gmail.com");
-        System.out.println(user.name + " registered at: " + user.registrationDate);
+        System.out.println(user.getName() + " registered at: " + user.getRegistrationDate());
         user.watch(movie);
 
 
