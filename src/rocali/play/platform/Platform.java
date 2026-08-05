@@ -19,9 +19,7 @@ public class Platform {
     }
 
     public void showContent() {
-        for (Movie movie : content) {
-            System.out.println(movie.getTitle());
-        }
+        content.forEach(movie -> System.out.println(movie.getTitle()));
     }
 
     public Movie removeContentByTitle(String title) {
@@ -35,13 +33,16 @@ public class Platform {
     }
 
     public Movie searchByTitle(String title) {
-        for (Movie movie : content) {
-            if (movie.getTitle().equalsIgnoreCase(title)) {
-                return movie;
-            }
-        }
+        return content.stream()
+                .filter(movie -> movie.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .orElse(null);
+    }
 
-        return null;
+    public List<Movie> searchByGender(String gender) {
+        return content.stream()
+                .filter(movie -> movie.getGender().equalsIgnoreCase(gender))
+                .toList();
     }
 
     public String getName() {
