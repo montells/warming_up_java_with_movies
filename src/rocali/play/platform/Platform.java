@@ -3,6 +3,7 @@ package rocali.play.platform;
 import rocali.play.content.Movie;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Platform {
@@ -18,8 +19,8 @@ public class Platform {
         this.content.add(movie);
     }
 
-    public void showContent() {
-        content.forEach(movie -> System.out.println(movie.getTitle()));
+    public List<String> getTitles() {
+        return content.stream().map(Movie::getTitle).toList();
     }
 
     public Movie removeContentByTitle(String title) {
@@ -30,6 +31,18 @@ public class Platform {
             }
         }
         return null;
+    }
+
+    public int getTotalDuration() {
+        return content.stream().mapToInt(Movie::getDuration).sum();
+    }
+
+    public List<Movie> getPopulars(int amount) {
+        return content.stream()
+                .sorted(Comparator.comparingDouble(Movie::getQualification)
+                .reversed())
+                .limit(amount)
+                .toList();
     }
 
     public Movie searchByTitle(String title) {

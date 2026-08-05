@@ -35,10 +35,11 @@ public class Movie {
                 "Qualification: " + qualification + "/5";
     }
 
-    public void qualify(double qualification) {
+    public Movie qualify(double qualification) {
         if (qualification >= 0 || qualification <= 5) {
             this.qualification = qualification;
         };
+        return this;
     }
 
     public boolean isPopular() {
