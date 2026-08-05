@@ -24,6 +24,26 @@ public class Platform {
         }
     }
 
+    public Movie removeContentByTitle(String title) {
+        for (Movie movie : content) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                content.remove(movie);
+                return movie;
+            }
+        }
+        return null;
+    }
+
+    public Movie searchByTitle(String title) {
+        for (Movie movie : content) {
+            if (movie.getTitle().equalsIgnoreCase(title)) {
+                return movie;
+            }
+        }
+
+        return null;
+    }
+
     public String getName() {
         return name;
     }

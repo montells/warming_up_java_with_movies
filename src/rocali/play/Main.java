@@ -26,6 +26,7 @@ public class Main {
         System.out.println("A little project for managing Movies 📽.");
         System.out.println("v" + VERSION);
         Platform platform = new Platform(PLATFORM_NAME);
+        loadContent(platform);
 
         while (true) {
             int option = ScannerUtils.getInt("""
@@ -49,10 +50,24 @@ public class Main {
                 }
                 case SHOW -> platform.showContent();
                 case SEARCH -> {
-                    // missing
+                    String title = ScannerUtils.getText("Movie Title: ");
+                    Movie movie = platform.searchByTitle(title);
+
+                    if (movie != null) {
+                        System.out.println(movie.getDetails());
+                    } else {
+                        System.out.println(platform.getName() + "have not the movie: " + title);
+                    }
                 }
                 case REMOVE -> {
-                    // missing
+                    String title = ScannerUtils.getText("Movie Title to remove: ");
+                    Movie movie = platform.removeContentByTitle(title);
+
+                    if (movie != null) {
+                        System.out.println("This movie has been deleted from " + platform.getName() + movie.getDetails());
+                    } else {
+                        System.out.println(platform.getName() + "have not the movie: " + title);
+                    }
                 }
                 case EXIT -> {
                     System.out.println("Bye...");
@@ -65,27 +80,18 @@ public class Main {
 //        extracted();
     }
 
+    private static void loadContent(Platform platform) {
+        platform.addContent(new Movie("Memento", 102, "Action", 1999, 3));
+        platform.addContent(new Movie("Carabana", 102, "War", 1999, 3));
+        platform.addContent(new Movie("Clandestinos", 102, "War", 1999, 3));
+        platform.addContent(new Movie("Titanic", 102, "Drama", 1999, 3));
+        platform.addContent(new Movie("Pulp Fiction", 102, "Action", 1999, 3));
+        platform.addContent(new Movie("Forrest Gump", 102, "Drama", 1999, 3));
+        platform.addContent(new Movie("Coco", 102, "Cartoon", 1999, 3));
+    }
+
     private static void showMovie() {
 
-//        System.out.println(movie.getDetails());
-//        if (movie.isAvailable()) {
-//            System.out.println("The movie " + movie.getTitle() + " is available.");
-//        }
-
-//        User user = new User("Michel", "montells@gmail.com");
-//        System.out.println(user.getName() + " registered at: " + user.getRegistrationDate());
-//        user.watch(movie);
-
-
-//        int qualificationInt = (int) qualification;
-//        long primesAmount = Long.parseLong("4");
-
-//        System.out.println("Qualification Integer: " + qualificationInt);
-//        System.out.println("PrimesAmount: " + primesAmount);
-
-
-//        System.out.println("There are " + platform.getContent().size() + " in the platform " + platform.getName());
-//        platform.showContent();
     }
 
     private static void extracted() {
