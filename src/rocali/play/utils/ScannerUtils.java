@@ -14,6 +14,11 @@ public class ScannerUtils {
     public static int getInt(String message){
         System.out.println(message + ": ");
 
+        while (!SCANNER.hasNextInt()) {
+            System.out.println("Invalid input \n" + message);
+            SCANNER.next();
+        }
+
         int number = SCANNER.nextInt();
         SCANNER.nextLine();
         return number;
@@ -21,6 +26,11 @@ public class ScannerUtils {
 
     public static double getDecimal(String message){
         System.out.println(message + ": ");
+
+        while (!SCANNER.hasNextDouble()) {
+            System.out.println("Invalid input \n" + message);
+            SCANNER.next();
+        }
 
         double number = SCANNER.nextDouble();
         SCANNER.nextLine();
