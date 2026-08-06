@@ -1,5 +1,8 @@
 package rocali.play.utils;
 
+import rocali.play.content.Genre;
+
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ScannerUtils {
@@ -35,5 +38,24 @@ public class ScannerUtils {
         double number = SCANNER.nextDouble();
         SCANNER.nextLine();
         return number;
+    }
+
+    public static Genre getGenre(String message){
+        while (true) {
+            System.out.println("...Opcions");
+            for (Genre genre : Genre.values()) {
+                System.out.println("-" + genre.name());
+            }
+
+            System.out.println("Which genre would you like to choose?");
+            String text = SCANNER.nextLine();
+
+            try {
+                return  Genre.valueOf(text.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid input \n" + message + ":");
+            }
+
+        }
     }
 }

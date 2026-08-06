@@ -6,20 +6,20 @@ public class Movie {
     private String title;
     private String description;
     private int duration;
-    private String gender;
+    private Genre genre;
     private LocalDate deliveryDate;
     private double qualification;
     private boolean available;
 
-    public Movie(String title, int duration, String gender) {
+    public Movie(String title, int duration, Genre genre) {
         this.title = title;
         this.duration = duration;
-        this.gender = gender;
+        this.genre = genre;
         this.available = true;
     }
 
-    public Movie(String title, int duration, String gender, int year, int month) {
-        this(title, duration, gender);
+    public Movie(String title, int duration, Genre genre, int year, int month) {
+        this(title, duration, genre);
         this.deliveryDate = LocalDate.of(year, month, 1);
     }
 
@@ -31,7 +31,7 @@ public class Movie {
         return "Title: " + title + " (" + duration + "m)\n" +
                 "Year: " + deliveryDate.getYear() + "\n" +
                 "Description: " + description + "\n" +
-                "Gender: " + gender + "\n" +
+                "Gender: " + genre + "\n" +
                 "Qualification: " + qualification + "/5";
     }
 
@@ -58,8 +58,8 @@ public class Movie {
         return duration;
     }
 
-    public String getGender() {
-        return gender;
+    public Genre getGenre() {
+        return genre;
     }
 
     public LocalDate getDeliveryDate() {

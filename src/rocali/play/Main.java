@@ -1,5 +1,6 @@
 package rocali.play;
 
+import rocali.play.content.Genre;
 import rocali.play.content.Movie;
 import rocali.play.platform.Platform;
 import rocali.play.utils.ScannerUtils;
@@ -37,7 +38,7 @@ public class Main {
                     int month = ScannerUtils.getInt("Movie Month");
                     double qualification = ScannerUtils.getDecimal("Movie Qualify");
 
-                    platform.addContent(new Movie(title, duration, "Action", year, month));
+                    platform.addContent(new Movie(title, duration, Genre.ACTION, year, month));
                 }
                 case SHOW -> {
                     List<String> titles = platform.getTitles();
@@ -54,7 +55,7 @@ public class Main {
                     }
                 }
                 case SEARCH_BY_GENDER -> {
-                    String gender = ScannerUtils.getText("Gender: ");
+                    Genre gender = ScannerUtils.getGenre("Gender");
                     List<Movie> movies_by_gender = platform.searchByGender(gender);
                     movies_by_gender.forEach(movie -> System.out.println(movie.getTitle()));
                 }
@@ -94,12 +95,12 @@ public class Main {
     }
 
     private static void loadContent(Platform platform) {
-        platform.addContent(new Movie("Memento", 102, "Action", 1999, 3).qualify(3.4));
-        platform.addContent(new Movie("Carabana", 102, "War", 1999, 3).qualify(4.3));
-        platform.addContent(new Movie("Clandestinos", 102, "War", 1999, 3).qualify(4.8));
-        platform.addContent(new Movie("Titanic", 102, "Drama", 1999, 3).qualify(4));
-        platform.addContent(new Movie("Pulp Fiction", 102, "Action", 1999, 3).qualify(3));
-        platform.addContent(new Movie("Forrest Gump", 102, "Drama", 1999, 3).qualify(4.4));
-        platform.addContent(new Movie("Coco", 102, "Cartoon", 1999, 3).qualify(3.9));
+        platform.addContent(new Movie("Memento", 102, Genre.ACTION, 1999, 3).qualify(3.4));
+        platform.addContent(new Movie("Carabana", 102, Genre.WAR, 1999, 3).qualify(4.3));
+        platform.addContent(new Movie("Clandestinos", 102, Genre.WAR, 1999, 3).qualify(4.8));
+        platform.addContent(new Movie("Titanic", 102, Genre.DRAMA, 1999, 3).qualify(4));
+        platform.addContent(new Movie("Pulp Fiction", 102, Genre.ACTION, 1999, 3).qualify(3));
+        platform.addContent(new Movie("Forrest Gump", 102, Genre.DRAMA, 1999, 3).qualify(4.4));
+        platform.addContent(new Movie("Coco", 102, Genre.CARTOON, 1999, 3).qualify(3.9));
     }
 }

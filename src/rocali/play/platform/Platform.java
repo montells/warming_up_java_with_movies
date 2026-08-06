@@ -1,5 +1,6 @@
 package rocali.play.platform;
 
+import rocali.play.content.Genre;
 import rocali.play.content.Movie;
 
 import java.util.ArrayList;
@@ -52,9 +53,9 @@ public class Platform {
                 .orElse(null);
     }
 
-    public List<Movie> searchByGender(String gender) {
+    public List<Movie> searchByGender(Genre genre) {
         return content.stream()
-                .filter(movie -> movie.getGender().equalsIgnoreCase(gender))
+                .filter(movie -> movie.getGenre().equals(genre))
                 .toList();
     }
 
