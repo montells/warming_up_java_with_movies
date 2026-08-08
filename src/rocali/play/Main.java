@@ -18,6 +18,7 @@ public class Main {
     public static final int  SEARCH_BY_GENDER = 4;
     public static final int  LIST_POPULARS = 5;
     public static final int  CONTENT_SUMMARY = 6;
+    public static final int  PLAY = 7;
     public static final int  REMOVE = 8;
     public static final int  EXIT = 9;
 
@@ -77,6 +78,15 @@ public class Main {
                         System.out.println("\nTitle: " + summary.title() + "\nDuration: " + summary.duration() + "\nGenre: " + summary.genre());
                     });
                 }
+                case PLAY -> {
+                    String title =  ScannerUtils.getText("Movie Title: ");
+                    Movie movie = platform.searchByTitle(title);
+                    if (movie != null) {
+                        platform.play(movie);
+                    } else  {
+                        System.out.println(platform.getName() + "have not the movie: " + title);
+                    }
+                }
                 case REMOVE -> {
                     String title = ScannerUtils.getText("Movie Title to remove: ");
                     Movie movie = platform.removeContentByTitle(title);
@@ -84,7 +94,7 @@ public class Main {
                     if (movie != null) {
                         System.out.println("This movie has been deleted from " + platform.getName() + movie.getDetails());
                     } else {
-                        System.out.println(platform.getName() + "have not the movie: " + title);
+                        System.out.println(platform.getName() + " have not the movie: " + title);
                     }
                 }
                 case EXIT -> {
@@ -103,7 +113,8 @@ public class Main {
                 3-> Search (Title)
                 4-> Search By Gender
                 5-> List populars
-                6-> Show all Sumaries
+                6-> Show all Summaries
+                7-> Play
                 8-> Remove
                 9-> Exit
                 """);

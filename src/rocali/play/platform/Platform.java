@@ -5,17 +5,30 @@ import rocali.play.content.Genre;
 import rocali.play.content.Movie;
 import rocali.play.exception.AlreadyExistingMovieException;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Platform {
     private String name;
     private List<Movie> content;
+    private Map<Movie, Integer> visualizations;
 
     public Platform(String name) {
         this.name = name;
         this.content = new ArrayList<Movie>();
+        this.visualizations = new HashMap<Movie, Integer>();
+    }
+
+    public void play(Movie movie) {
+        int movieCurrentVisualizationsCount = visualizations.getOrDefault(movie, 0);
+        System.out.println("This movie has been " + movieCurrentVisualizationsCount + " times played");
+
+        this.incrementVisualization(movie);
+        movie.play();
+    }
+
+    private void incrementVisualization(Movie movie) {
+        int currentVisualizationsCount = this.visualizations.getOrDefault(movie, 0);
+        this.visualizations.put(movie, currentVisualizationsCount + 1);
     }
 
     public void addContent(Movie movie) {
