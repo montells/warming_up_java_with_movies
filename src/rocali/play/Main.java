@@ -1,5 +1,6 @@
 package rocali.play;
 
+import rocali.play.content.ContentSummary;
 import rocali.play.content.Genre;
 import rocali.play.content.Movie;
 import rocali.play.exception.AlreadyExistingMovieException;
@@ -16,6 +17,7 @@ public class Main {
     public static final int  SEARCH = 3;
     public static final int  SEARCH_BY_GENDER = 4;
     public static final int  LIST_POPULARS = 5;
+    public static final int  CONTENT_SUMMARY = 6;
     public static final int  REMOVE = 8;
     public static final int  EXIT = 9;
 
@@ -69,6 +71,12 @@ public class Main {
                     List<Movie> popular_movies = platform.getPopulars(5);
                     popular_movies.forEach(movie -> System.out.println(movie.getTitle() + " -> " + movie.getQualification()));
                 }
+                case CONTENT_SUMMARY -> {
+                    List<ContentSummary> contentSummaries = platform.getContentSummary();
+                    contentSummaries.forEach(summary -> {
+                        System.out.println("\nTitle: " + summary.title() + "\nDuration: " + summary.duration() + "\nGenre: " + summary.genre());
+                    });
+                }
                 case REMOVE -> {
                     String title = ScannerUtils.getText("Movie Title to remove: ");
                     Movie movie = platform.removeContentByTitle(title);
@@ -95,6 +103,7 @@ public class Main {
                 3-> Search (Title)
                 4-> Search By Gender
                 5-> List populars
+                6-> Show all Sumaries
                 8-> Remove
                 9-> Exit
                 """);

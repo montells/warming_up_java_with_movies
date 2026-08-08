@@ -1,5 +1,6 @@
 package rocali.play.platform;
 
+import rocali.play.content.ContentSummary;
 import rocali.play.content.Genre;
 import rocali.play.content.Movie;
 import rocali.play.exception.AlreadyExistingMovieException;
@@ -29,6 +30,12 @@ public class Platform {
 
     public List<String> getTitles() {
         return content.stream().map(Movie::getTitle).toList();
+    }
+
+    public List<ContentSummary> getContentSummary() {
+        return content.stream()
+                .map(movie -> new ContentSummary(movie.getTitle(), movie.getDuration(), movie.getGenre()))
+                .toList();
     }
 
     public Movie removeContentByTitle(String title) {
