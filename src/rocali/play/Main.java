@@ -2,6 +2,7 @@ package rocali.play;
 
 import rocali.play.content.Genre;
 import rocali.play.content.Movie;
+import rocali.play.exception.AlreadyExistingMovieException;
 import rocali.play.platform.Platform;
 import rocali.play.utils.ScannerUtils;
 
@@ -38,7 +39,12 @@ public class Main {
                     int month = ScannerUtils.getInt("Movie Month");
                     double qualification = ScannerUtils.getDecimal("Movie Qualify");
 
-                    platform.addContent(new Movie(title, duration, Genre.ACTION, year, month));
+                    try {
+                        platform.addContent(new Movie(title, duration, Genre.ACTION, year, month));
+                    } catch (AlreadyExistingMovieException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                 }
                 case SHOW -> {
                     List<String> titles = platform.getTitles();

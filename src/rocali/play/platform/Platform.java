@@ -2,6 +2,7 @@ package rocali.play.platform;
 
 import rocali.play.content.Genre;
 import rocali.play.content.Movie;
+import rocali.play.exception.AlreadyExistingMovieException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -17,6 +18,12 @@ public class Platform {
     }
 
     public void addContent(Movie movie) {
+        Movie existingMovie = searchByTitle(movie.getTitle());
+
+        if (existingMovie != null) {
+            throw new AlreadyExistingMovieException(movie.getTitle());
+        }
+
         this.content.add(movie);
     }
 
